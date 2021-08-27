@@ -7,17 +7,14 @@ public class Subject {
 	private Integer grade;
 
 	public Subject() {
-		super();
 	}
 
 	public Subject(String name, Integer grade) {
-		super();
 		this.name = name;
 		this.grade = grade;
 	}
 
 	public Subject(Integer id, String name, Integer grade) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.grade = grade;

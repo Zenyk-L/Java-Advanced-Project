@@ -8,7 +8,7 @@ public class Faculty {
 	private String name;
 	private Integer studentQuantity;
 	private List<String> subjects;
-
+	 
 	public Faculty() {
 	}
 
