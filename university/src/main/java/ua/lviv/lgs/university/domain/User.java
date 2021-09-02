@@ -1,32 +1,64 @@
 package ua.lviv.lgs.university.domain;
 
-public class Student {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="users")
+public class User {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	
 	private String email;
+	
 	private String firstName;
+	
 	private String lastName;
-	private StudentRole role;
+	
 	private String password;
+	
+	private String passwordConfirm;
+	
+	@Enumerated(EnumType.STRING)
+	private UserRole role;
 
-	public Student() {
+	public User() {}
+	
+	public User(User user) {
+		this.id = user.id;
+		this.email = user.email;
+		this.firstName = user.firstName;
+		this.lastName = user.lastName;
+		this.password = user.password;
+		this.role = user.role;
 	}
-
-	public Student(String email, String firstName, String lastName, StudentRole role, String password) {
+	
+	public User(String email, String firstName, String lastName, String password, String passwordConfirm,UserRole role) {
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.role = role;
 		this.password = password;
+		this.role = role;
 	}
-
-	public Student(Integer id, String email, String firstName, String lastName, StudentRole role, String password) {
+	
+	
+	public User(Integer id, String email, String firstName, String lastName, String password, String passwordConfirm,
+			UserRole role) {
+		super();
 		this.id = id;
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.role = role;
 		this.password = password;
+		this.role = role;
 	}
 
 	public Integer getId() {
@@ -61,20 +93,28 @@ public class Student {
 		this.lastName = lastName;
 	}
 
-	public StudentRole getRole() {
-		return role;
-	}
-
-	public void setRole(StudentRole role) {
-		this.role = role;
-	}
-
 	public String getPassword() {
 		return password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
+	}
+
+	public UserRole getRole() {
+		return role;
+	}
+
+	public void setRole(UserRole role) {
+		this.role = role;
 	}
 
 	@Override
@@ -98,7 +138,7 @@ public class Student {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Student other = (Student) obj;
+		User other = (User) obj;
 		if (email == null) {
 			if (other.email != null)
 				return false;
@@ -131,10 +171,11 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", role=" + role + ", password=" + password + "]";
+		return "User [id=" + id + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", password=" + password + ", role=" + role + "]";
 	}
 	
 	
 
+	
 }
