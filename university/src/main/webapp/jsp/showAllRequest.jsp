@@ -1,6 +1,5 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
@@ -14,7 +13,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Welcome</title>
+<title>All requests</title>
 
 <link href="${contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -30,37 +29,23 @@
 		<!-- Page Content -->
 		<div style="margin-left: 10%; display: flex; flex-wrap: wrap">
 
-			<c:if test="${not empty faculty}">
-				<c:forEach items="${faculty}" var="currentFaculty">
+			<c:if test="${not empty requests}">
+				<c:forEach items="${requests}" var="currentRequest">
 
-					<%-- 					<form:form method="POST"
-						action="${contextPath}/addRequestToFaculty"> --%>
-						
 					<div class="w3-card-4" style="width: 20%; margin: 2%">
 						<img
 							src="https://kaverisias.com/wp-content/uploads/2018/01/catalog-default-img.gif"
 							alt="Faculty" style="width: 100%">
 						<div class="w3-container w3-center">
-							<h3>${currentFaculty.name}</h3>
-							<p>${currentFaculty.studentQuantity}</p>
-							<p>${currentFaculty.subjects}</p>
+							<h3>To faculty: ${currentRequest.faculty.name}</h3>
+							<p>Student name: ${currentRequest.user.firstName}</p>
+							<p>Student last name: ${currentRequest.user.lastName}</p>
 						</div>
-
-						<a class="w3-button w3-block w3-dark-grey"
-							href="${contextPath}/addRequestToFaculty?facultyId=${currentFaculty.id}&email=${pageContext.request.userPrincipal.name}">
-							Register to faculty</a>
+						<button class="w3-button w3-block w3-dark-grey">Accept request</button>
+							<%-- <a class="w3-button w3-block w3-dark-grey"
+                               href="${contextPath}/addRequestToFaculty?facultyId=${currentFaculty.id}&email=${pageContext.request.userPrincipal.name}">
+                                Register</a> --%>
 					</div>
-					<%-- 						
-						<td><form:input type="hidden" path="facultyId"
-											value="${currentFaculty.id}" /></td>
-							<td><form:input type="hidden" path="email"
-											value="${pageContext.request.userPrincipal.name}" /></td>
-						
-						<input type="submit" value="Submit" />
-						
-						<input type="hidden" name="${_csrf.parameterName}"
-					value="${_csrf.token}" />
-					</form:form> --%>
 
 
 				</c:forEach>

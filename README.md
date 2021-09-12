@@ -1,2 +1,2 @@
 # Java-Advanced-Project
-This educational project with periodicals domain. The student will have opportunity to enter his data. Admin will approve registration and system will count point and determine who is accepted.
+This educational project with university model. The student will have opportunity to enter his data. Admin will approve registration and system will count point and determine who is accepted.

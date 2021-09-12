@@ -44,9 +44,6 @@ public class UserController {
 		return "login";
 	}
 
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String welcome(Model model) {
-		return "home";
-	}
+	
 
 }
