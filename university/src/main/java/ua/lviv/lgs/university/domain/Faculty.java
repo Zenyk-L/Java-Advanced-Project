@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,21 +19,23 @@ public class Faculty {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	private String name;
+	@Enumerated(EnumType.STRING)
+	private FacultyName name;
 	private Integer studentQuantity;
 	@ElementCollection
-	private List<String> subjects;
+	@Enumerated(EnumType.STRING)
+	private List<Subject> subjects;
 	 
 	public Faculty() {
 	}
 
-	public Faculty(String name, Integer studentQuantity, List<String> subjects) {
+	public Faculty(FacultyName name, Integer studentQuantity, List<Subject> subjects) {
 		this.name = name;
 		this.studentQuantity = studentQuantity;
 		this.subjects = subjects;
 	}
 
-	public Faculty(Integer id, String name, Integer studentQuantity, List<String> subjects) {
+	public Faculty(Integer id, FacultyName name, Integer studentQuantity, List<Subject> subjects) {
 		this.id = id;
 		this.name = name;
 		this.studentQuantity = studentQuantity;
@@ -46,11 +50,11 @@ public class Faculty {
 		this.id = id;
 	}
 
-	public String getName() {
+	public FacultyName getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(FacultyName name) {
 		this.name = name;
 	}
 
@@ -62,11 +66,11 @@ public class Faculty {
 		this.studentQuantity = studentQuantity;
 	}
 
-	public List<String> getSubjects() {
+	public List<Subject> getSubjects() {
 		return subjects;
 	}
 
-	public void setSubjects(List<String> subjects) {
+	public void setSubjects(List<Subject> subjects) {
 		this.subjects = subjects;
 	}
 
