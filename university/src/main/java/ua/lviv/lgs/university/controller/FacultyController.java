@@ -1,6 +1,8 @@
 package ua.lviv.lgs.university.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import ua.lviv.lgs.university.domain.Faculty;
@@ -43,12 +46,15 @@ public class FacultyController {
 	}
 	
 	@PostMapping(value = "/addFaculty")
-	public ModelAndView addFaculty(	@Validated @ModelAttribute("faculty") Faculty faculty, BindingResult bindingResult) {
+	public ModelAndView addFaculty(	@RequestParam MultipartFile file, @Validated @ModelAttribute("faculty") Faculty faculty, BindingResult bindingResult) throws IOException {
+		
+	
 			if(faculty.getSubjects().size() == 0) {
 				List<Subject> list = new ArrayList<Subject>();
 				list.add(Subject.UKRAINIAN_LANGUAGE);
 				faculty.setSubjects(list);
 			}
+			faculty.setEncodedImage(Base64.getEncoder().encodeToString(file.getBytes()));
 			facultyService.save(faculty);
 			return new ModelAndView("redirect:/home");	
 		

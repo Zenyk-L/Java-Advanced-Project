@@ -14,7 +14,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Create faculty</title>
+<title>Fill marks</title>
 
 <link href="${contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -30,34 +30,31 @@
 		<!-- Page Content -->
 		<div style="margin-left: 10%">
 
-			<form:form method="POST" action="${contextPath}/addFaculty"
-				modelAttribute="faculty" enctype="multipart/form-data">
+			<form:form method="POST" action="${contextPath}/addMarks"
+				modelAttribute="user1">
+
 				<table>
 					<tr>
-						<td><form:label path="name">Name</form:label></td>
-						<td><form:select path="name">						
-						
-						<%-- <form:option value="NONE"> --SELECT--</form:option> --%>
-    					<form:options items="${namesList}"></form:options>
-						</form:select> </td>
+						<h4>Fill your marks</h4>
+
 					</tr>
-					<tr>
-						<td>
-							<input type="file" name="file" />
-						</td>
-					</tr>
-					<tr>
-						<td><form:label path="studentQuantity">Student Quantity</form:label></td>
-						<td><form:input path="studentQuantity" required="required"/></td>
-					</tr>
-					<c:forEach items="${subjectsList}" var="currentSubject">
-					<tr>
-						<td><form:checkbox path="subjects" value="${currentSubject}" label="  ${currentSubject} " /></td>
-						<%-- <td><c:out value="${currentSubject}" /></td> --%>
-					</tr>
+					<%-- <c:if test="${not empty user.markMap}"> --%>
+
+					<c:forEach var="entry" items="${user1.markMap}">
+						<tr>
+
+							<td><form:label path="markMap">"${entry.key}"
+									<%-- <c:out value="${entry.key}" /> --%>
+								</form:label></td>
+							<td><form:input type="number" min="0" max="12"
+									path="markMap" value="${entry.value}" required="required" /></td>
+
+						</tr>
 					</c:forEach>
+					<%-- </c:if> --%>
+
 					<tr>
-						<td><input type="submit" value="Submit" /></td>
+						<td><input type="submit" value="Submit" name="submit" /></td>
 					</tr>
 				</table>
 				<input type="hidden" name="${_csrf.parameterName}"
@@ -67,8 +64,9 @@
 		</div>
 
 
+
 	</div>
-	
+
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="${contextPath}/resources/js/bootstrap.min.js"></script>

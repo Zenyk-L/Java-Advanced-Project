@@ -1,11 +1,15 @@
 package ua.lviv.lgs.university.domain;
 
+import java.util.Map;
+
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
@@ -26,8 +30,21 @@ public class User {
 	
 	private String passwordConfirm;
 	
+	
 	@Enumerated(EnumType.STRING)
 	private UserRole role;
+	
+	@ElementCollection
+	private Map<Subject, Integer> markMap;
+	
+
+	public Map<Subject, Integer> getMarkMap() {
+		return markMap;
+	}
+
+	public void setMarkMap(Map<Subject, Integer> markMap) {
+		this.markMap = markMap;
+	}
 
 	public User() {}
 	
@@ -37,7 +54,9 @@ public class User {
 		this.firstName = user.firstName;
 		this.lastName = user.lastName;
 		this.password = user.password;
+		this.passwordConfirm = user.passwordConfirm;
 		this.role = user.role;
+		this.markMap = markMap;
 	}
 	
 	public User(String email, String firstName, String lastName, String password, String passwordConfirm,UserRole role) {
@@ -171,8 +190,11 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", password=" + password + ", role=" + role + "]";
+				+ ", password=" + password + ", passwordConfirm=" + passwordConfirm + ", role=" + role + ", markMap="
+				+ markMap + "]";
 	}
+
+	
 	
 	
 

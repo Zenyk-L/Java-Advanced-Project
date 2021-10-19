@@ -14,7 +14,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Create faculty</title>
+<title>Fill marks</title>
 
 <link href="${contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -30,33 +30,24 @@
 		<!-- Page Content -->
 		<div style="margin-left: 10%">
 
-			<form:form method="POST" action="${contextPath}/addFaculty"
-				modelAttribute="faculty" enctype="multipart/form-data">
+			<form:form method="POST" action="${contextPath}/fillMarks"
+				modelAttribute="user">
 				<table>
 					<tr>
-						<td><form:label path="name">Name</form:label></td>
-						<td><form:select path="name">						
-						
-						<%-- <form:option value="NONE"> --SELECT--</form:option> --%>
-    					<form:options items="${namesList}"></form:options>
-						</form:select> </td>
+						<h1> Hello ${mail}</h1>
+						<h6>Fill your marks</h6>
+
 					</tr>
-					<tr>
-						<td>
-							<input type="file" name="file" />
-						</td>
-					</tr>
-					<tr>
-						<td><form:label path="studentQuantity">Student Quantity</form:label></td>
-						<td><form:input path="studentQuantity" required="required"/></td>
-					</tr>
-					<c:forEach items="${subjectsList}" var="currentSubject">
-					<tr>
-						<td><form:checkbox path="subjects" value="${currentSubject}" label="  ${currentSubject} " /></td>
-						<%-- <td><c:out value="${currentSubject}" /></td> --%>
-					</tr>
+
+					 <c:forEach items="${subjectsMap}" var="currentSubject">
+						<tr>
+							
+							<td><form:label path="markMap">${currentSubject.key}</form:label></td> 
+						<td><form:input  type="number" min="0" max="12" path="markMap" value="${currentSubject.value}" required="required" /></td> 
+
+						</tr>
 					</c:forEach>
-					<tr>
+					<tr> 
 						<td><input type="submit" value="Submit" /></td>
 					</tr>
 				</table>
@@ -67,8 +58,9 @@
 		</div>
 
 
+
 	</div>
-	
+
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="${contextPath}/resources/js/bootstrap.min.js"></script>

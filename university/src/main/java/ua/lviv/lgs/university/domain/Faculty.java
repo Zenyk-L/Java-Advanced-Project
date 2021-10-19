@@ -9,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +26,9 @@ public class Faculty {
 	@ElementCollection
 	@Enumerated(EnumType.STRING)
 	private List<Subject> subjects;
+	
+	@Lob
+	private String encodedImage;
 	 
 	public Faculty() {
 	}
@@ -72,6 +76,14 @@ public class Faculty {
 
 	public void setSubjects(List<Subject> subjects) {
 		this.subjects = subjects;
+	}
+
+	public String getEncodedImage() {
+		return encodedImage;
+	}
+
+	public void setEncodedImage(String encodedImage) {
+		this.encodedImage = encodedImage;
 	}
 
 	@Override
