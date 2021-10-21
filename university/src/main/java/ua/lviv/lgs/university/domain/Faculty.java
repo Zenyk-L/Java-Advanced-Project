@@ -1,5 +1,6 @@
 package ua.lviv.lgs.university.domain;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.ElementCollection;
@@ -10,26 +11,38 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="faculty")
+@Table(name = "faculty")
 public class Faculty {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
+
 	@Enumerated(EnumType.STRING)
 	private FacultyName name;
+
 	private Integer studentQuantity;
+
+	private Double requiredLevel;
 	@ElementCollection
 	@Enumerated(EnumType.STRING)
 	private List<Subject> subjects;
-	
+
+	@ElementCollection	
+	@ManyToMany
+	private List<User> users = new LinkedList<>();
+
 	@Lob
 	private String encodedImage;
-	 
+	
+	public Integer getCount() {
+		return users.size();
+	}
+
 	public Faculty() {
 	}
 
@@ -86,6 +99,22 @@ public class Faculty {
 		this.encodedImage = encodedImage;
 	}
 
+	public Double getRequiredLevel() {
+		return requiredLevel;
+	}
+
+	public void setRequiredLevel(Double requiredLevel) {
+		this.requiredLevel = requiredLevel;
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -131,8 +160,9 @@ public class Faculty {
 
 	@Override
 	public String toString() {
-		return "Faculty [id=" + id + ", name=" + name + ", studentQuantity=" + studentQuantity + ", subjects="
-				+ subjects + "]";
+		return "Faculty [id=" + id + ", name=" + name + ", studentQuantity=" + studentQuantity + ", requiredLevel="
+				+ requiredLevel + ", subjects=" + subjects + ", users=" + users + ", encodedImage=" + encodedImage
+				+ "]";
 	}
 
 }

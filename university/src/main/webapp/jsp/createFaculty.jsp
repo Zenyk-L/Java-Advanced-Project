@@ -50,6 +50,10 @@
 						<td><form:label path="studentQuantity">Student Quantity</form:label></td>
 						<td><form:input path="studentQuantity" required="required"/></td>
 					</tr>
+					<tr>
+						<td><form:label path="requiredLevel">Required marks level</form:label></td>
+						<td><form:input path="requiredLevel" required="required"/></td>
+					</tr>
 					<c:forEach items="${subjectsList}" var="currentSubject">
 					<tr>
 						<td><form:checkbox path="subjects" value="${currentSubject}" label="  ${currentSubject} " /></td>

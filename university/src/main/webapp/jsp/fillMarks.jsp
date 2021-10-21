@@ -30,31 +30,30 @@
 		<!-- Page Content -->
 		<div style="margin-left: 10%">
 
-			<form:form method="POST" action="${contextPath}/addMarks"
-				modelAttribute="user1">
+			<form:form id="f" method="POST" action="${contextPath}/addMarks"
+				modelAttribute="container">
 
 				<table>
 					<tr>
 						<h4>Fill your marks</h4>
+						
 
 					</tr>
-					<%-- <c:if test="${not empty user.markMap}"> --%>
 
-					<c:forEach var="entry" items="${user1.markMap}">
+					<c:forEach var="entry" items="${container.marks}"
+						varStatus="tagStatus">
 						<tr>
-
-							<td><form:label path="markMap">"${entry.key}"
-									<%-- <c:out value="${entry.key}" /> --%>
-								</form:label></td>
-							<td><form:input type="number" min="0" max="12"
-									path="markMap" value="${entry.value}" required="required" /></td>
-
+							<td><form:label  path="marks[${tagStatus.index}].subject" >"${entry.subject}"</form:label></td>
+							<td><form:input type= "hidden" path="marks[${tagStatus.index}].id" value="${entry.id}" readonly="true" /></td>
+							<td><form:input type= "hidden" path="marks[${tagStatus.index}].subject" value="${entry.subject}" readonly="true" /></td>
+							<td><form:input type="number" min="0" max="12" path="marks[${tagStatus.index}].grade" value="${entry.grade}" /></td>
+							
 						</tr>
 					</c:forEach>
-					<%-- </c:if> --%>
 
 					<tr>
-						<td><input type="submit" value="Submit" name="submit" /></td>
+						<td><input type="submit" value="Submit" name="submit" onclick="myFunction()" /></td> 
+						<!-- <td><button type="submit" value="Submit" name="submit" onclick="myFunction()" >Submit</button></td> -->
 					</tr>
 				</table>
 				<input type="hidden" name="${_csrf.parameterName}"
@@ -63,9 +62,17 @@
 
 		</div>
 
-
-
 	</div>
+	
+	<script>
+	var form = document.getElementById('f');
+
+	function myFunction() {
+	  if (form.checkValidity()) {
+	    alert("Marks added Succesful!");
+	  }
+	}
+	</script>
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

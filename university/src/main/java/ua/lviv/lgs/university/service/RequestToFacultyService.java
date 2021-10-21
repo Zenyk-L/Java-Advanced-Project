@@ -21,5 +21,10 @@ public class RequestToFacultyService {
 	public List<RequestToFaculty> getAllRequest(){
 		return requestToFacultyRepository.findAll();
 	}
+	
+	public void delete(Integer id) {
+	  requestToFacultyRepository.deleteById(id);
+	}
+	
 
 }

@@ -8,6 +8,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+
 @Entity
 @Table (name="requestToFaculty")
 public class RequestToFaculty {
@@ -18,10 +22,12 @@ public class RequestToFaculty {
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private User user;
 
 	@ManyToOne
 	@JoinColumn(name = "faculty_id", referencedColumnName = "id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Faculty faculty;
 	
 	public RequestToFaculty() {

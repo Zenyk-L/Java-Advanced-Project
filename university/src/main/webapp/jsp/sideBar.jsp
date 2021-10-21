@@ -27,9 +27,10 @@
 		<div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 10%">
 			<h3 class="w3-bar-item">Menu</h3>
 			<a href="/home" class="w3-bar-item w3-button">Home</a>
-			<a href="/addMarks?email=${pageContext.request.userPrincipal.name} " class="w3-bar-item w3-button">Fill marks</a>
+			<a href="/addMarks" class="w3-bar-item w3-button">Fill marks</a>
 			 <a href="/createFaculty" class="w3-bar-item w3-button">Create faculty</a>
 			<a href="/showAllRequest" class="w3-bar-item w3-button">Show all requests</a>
+			<a href="/showAllFacultys" class="w3-bar-item w3-button">Show university</a>
 		</div>
 		
 			<div style="margin-left: 10%; hight: 50px">

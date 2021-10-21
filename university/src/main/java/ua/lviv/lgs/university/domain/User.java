@@ -1,15 +1,20 @@
 package ua.lviv.lgs.university.domain;
 
-import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
-import javax.persistence.ElementCollection;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -34,20 +39,52 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	private UserRole role;
 	
-	@ElementCollection
-	private Map<Subject, Integer> markMap;
+	@OneToMany(cascade = {CascadeType.ALL}, fetch=FetchType.EAGER)
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
+	private List<Mark> markList = new LinkedList<>();
 	
-
-	public Map<Subject, Integer> getMarkMap() {
-		return markMap;
-	}
-
-	public void setMarkMap(Map<Subject, Integer> markMap) {
-		this.markMap = markMap;
-	}
 
 	public User() {}
 	
+	public List<Mark> getMarkList() {
+		return markList;
+	}
+
+	public void setMarkList(List<Mark> markList) {
+		this.markList = markList;
+	}
+	
+	public List<Mark> getFillMarkList() {
+		Set<Subject> subjectsPresent = new HashSet<>();
+		for (Mark mark :markList) {
+			subjectsPresent.add(mark.getSubject());
+		}
+		Subject[] subjects = Subject.values();
+		for (Subject subject : subjects) {
+			if(!subjectsPresent.contains(subject)) {
+				markList.add(new Mark(subject, 0));
+			}
+		}
+		
+		return markList;
+	}
+	
+	public Set<Subject> getPresentSubjects() {
+		Set<Subject> subjectsPresent = new HashSet<>();
+		for (Mark mark :markList) {
+			subjectsPresent.add(mark.getSubject());
+		}
+		
+		
+		return subjectsPresent;
+	}
+
+	public Integer getGradeBySubject(Subject subject) {
+		 return markList.stream().filter(mark -> mark.getSubject().equals(subject)).findFirst().get().getGrade();
+		
+	}
+	
+
 	public User(User user) {
 		this.id = user.id;
 		this.email = user.email;
@@ -56,7 +93,7 @@ public class User {
 		this.password = user.password;
 		this.passwordConfirm = user.passwordConfirm;
 		this.role = user.role;
-		this.markMap = markMap;
+		this.markList = markList;
 	}
 	
 	public User(String email, String firstName, String lastName, String password, String passwordConfirm,UserRole role) {
@@ -190,8 +227,9 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", password=" + password + ", passwordConfirm=" + passwordConfirm + ", role=" + role + ", markMap="
-				+ markMap + "]";
+				+ ", password=" + password + ", passwordConfirm=" + passwordConfirm + ", role=" + role + ", markList="
+				+ markList 
+				+ "]";
 	}
 
 	

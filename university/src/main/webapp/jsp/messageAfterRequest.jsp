@@ -14,7 +14,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Fill marks</title>
+<title>message</title>
 
 <link href="${contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -28,38 +28,21 @@
 		<jsp:include page="sideBar.jsp"></jsp:include>
 
 		<!-- Page Content -->
-		<div style="margin-left: 10%">
+		<div style="margin-left: 10%; pading-top: 30%;">
 
-			<form:form method="POST" action="${contextPath}/fillMarks"
-				modelAttribute="user">
-				<table>
-					<tr>
-						<h1> Hello ${mail}</h1>
-						<h6>Fill your marks</h6>
+			<div style="margin: 0 auto; width: 40%">
+				<h1>Hello</h1>
+				<h3>${message}</h3>
 
-					</tr>
+			</div>
 
-					 <c:forEach items="${subjectsMap}" var="currentSubject">
-						<tr>
-							
-							<td><form:label path="markMap">${currentSubject.key}</form:label></td> 
-						<td><form:input  type="number" min="0" max="12" path="markMap" value="${currentSubject.value}" required="required" /></td> 
 
-						</tr>
-					</c:forEach>
-					<tr> 
-						<td><input type="submit" value="Submit" /></td>
-					</tr>
-				</table>
-				<input type="hidden" name="${_csrf.parameterName}"
-					value="${_csrf.token}" />
-			</form:form>
 
 		</div>
 
-
-
 	</div>
+
+
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
