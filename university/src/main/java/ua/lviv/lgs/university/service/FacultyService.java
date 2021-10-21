@@ -1,5 +1,6 @@
 package ua.lviv.lgs.university.service;
 
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -45,8 +46,24 @@ public class FacultyService {
 		
 		Faculty faculty = facultyRepository.getById(facultyId);
 
-		User user =userRepository.getById(userId);
-		faculty.getUsers().remove(user);
+		User user1 =userRepository.getById(userId);
+		System.out.println(user1);
+
+		List<User> userlist = faculty.getUsers();
+		Iterator<User> iterator = userlist.iterator();
+		while (iterator.hasNext()) {
+			User user = iterator.next();
+			System.out.println(user);
+			System.out.println(user.equals(user1));
+			
+			if(user.getId().equals(userId)) {
+				iterator.remove();
+			}
+		}
+
+		System.out.println(userlist);
+		System.out.println(faculty.getUsers());
+		 facultyRepository.save(faculty);
 	}
 	
 

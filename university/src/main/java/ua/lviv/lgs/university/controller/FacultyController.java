@@ -79,7 +79,8 @@ public class FacultyController {
 System.out.println(userId);
 System.out.println(facultyId);
 		facultyService.deleteUserFromFaculty(userId, facultyId);
-		ModelAndView modelAndView = new ModelAndView("redirect:/home");
+		ModelAndView modelAndView = new ModelAndView("university");
+		modelAndView.addObject("faculty", facultyService.getAllFaculty());
 		return modelAndView;
 	}
 
@@ -150,7 +151,7 @@ System.out.println(facultyId);
 				+ requestToFaculty.getUser().getEmail());
 		System.out.println(avg);
 
-		if (faculty.getRequiredLevel() < avg) {
+		if (faculty.getRequiredLevel() <= avg) {
 			faculty.getUsers().add(user);
 			message = "congratulation you are student now";
 			System.out.println(message);
