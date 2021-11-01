@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -20,6 +22,25 @@
     <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
     <link type="text/css" href="login.css" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script
+            src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script
+            src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var selItem = localStorage.getItem("locales");
+            $('#locales').val(selItem ? selItem : 'en');
+            $('#locales').change(function(){
+                var selectedOption = $('#locales').val();
+                if(selectedOption){
+                    window.location.replace('?lang=' + selectedOption);
+                    localStorage.setItem("locales", selectedOption);
+                }
+            });
+
+        });
+    </script>
 
 </head>
 <body class="w3-teal">
@@ -32,25 +53,35 @@
             <img src="https://previews.123rf.com/images/captainvector/captainvector1703/captainvector170309945/74377645-university-logo-element.jpg" id="icon" alt="Login icon"/>
         </div>
         <form method="POST" action="${contextPath}/login" class="form-signin">
-            <h2 class="form-heading">Log in</h2>
+            <h2 class="form-heading"><spring:message code="login.title" /></h2>
 
             <div class="form-group ${error != null ? 'has-error' : ''}">
                 <span>${message}</span>
-                <input name="email" type="text" class="fadeIn second" placeholder="Email" value="user@gmail.com"
+                <input name="email" type="text" class="fadeIn second" placeholder="<spring:message code="login.email" />" value="user@gmail.com"
                        autofocus="true"/>
-                <input name="password" type="password" class="fadeIn third" placeholder="Password" value="user"/>
+                <input name="password" type="password" class="fadeIn third" placeholder="<spring:message code="login.password" />" value="user"/>
                 <span>${error}</span>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-                <input class="fadeIn fourth w3-teal" type="submit" value="Log In"/>
-
-
+                <input class="fadeIn fourth w3-teal" type="submit" value="<spring:message code="login.logIn" />"/>
             </div>
-
         </form>
 
+        <div>
+            <fieldset>
+                <label style= "color: black"> <spring:message code="login.choose_language" /> </label>
+                <select
+                        id="locales">
+                    <option value="en"><spring:message code="login.english" /></option>
+                    <option value="ua"><spring:message code="login.ukrainian" /></option>
+                </select>
+
+            </fieldset>
+        </div>
+
+
         <div id="formFooter" class="w3-teal">
-            <a class="underlineHover"  href="${contextPath}/registration" >Create an account</a>
+            <a class="underlineHover"  href="${contextPath}/registration" ><spring:message code="login.create_account" /></a>
         </div>
 
     </div>
