@@ -31,6 +31,7 @@
 			 <a href="/createFaculty" class="w3-bar-item w3-button">Create faculty</a>
 			<a href="/showAllRequest" class="w3-bar-item w3-button">Show all requests</a>
 			<a href="/showAllFacultys" class="w3-bar-item w3-button">Show university</a>
+
 		</div>
 		
 			<div style="margin-left: 10%; hight: 50px">
