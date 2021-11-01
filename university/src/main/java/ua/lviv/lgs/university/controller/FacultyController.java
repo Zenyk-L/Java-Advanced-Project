@@ -101,7 +101,7 @@ System.out.println(facultyId);
 		return modelAndView;
 	}
 
-	@GetMapping("/deletFaculty")
+	@GetMapping("/deleteFaculty")
 	public ModelAndView deleteFaculty(@RequestParam("facultyId") Integer id, @RequestParam("email") String email) {
 
 		facultyService.deleteFacultyById(id);

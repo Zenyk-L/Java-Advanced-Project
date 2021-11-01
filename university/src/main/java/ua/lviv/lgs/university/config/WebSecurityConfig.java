@@ -17,34 +17,35 @@ import ua.lviv.lgs.university.security.CustomUserDetailsService;
 @Configuration
 @EnableWebSecurity
 @ComponentScan(basePackageClasses = CustomUserDetailsService.class)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	private UserDetailsService userDetailsService;
+    @Autowired
+    private UserDetailsService userDetailsService;
 
-	public void configAuthentification(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-	}
+    public void configAuthentification(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    }
 
-	@Bean(name = "passwordEncoder")
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+    @Bean(name = "passwordEncoder")
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/").permitAll()
-		.antMatchers("/home").access("hasRole('ROLE_USER')")
-		.antMatchers("/createFaculty").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-		.antMatchers("/addFaculty").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-		.antMatchers("/showAllRequest").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-		.antMatchers("/addMarks").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-		.antMatchers("/addRequestToFaculty").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-				.anyRequest().permitAll().and()
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests().antMatchers("/").permitAll()
+                .antMatchers("/home").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+                .antMatchers("/createFaculty").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/deleteFaculty").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/addFaculty").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/showAllRequest").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/addMarks").access("hasRole('ROLE_USER')")
+                .antMatchers("/addRequestToFaculty").access("hasRole('ROLE_USER')")
+                .anyRequest().permitAll().and()
 
-				.formLogin().loginPage("/login").defaultSuccessUrl("/home").usernameParameter("email")
-				.passwordParameter("password").and().logout().logoutSuccessUrl("/login?logout").and()
-				.exceptionHandling().accessDeniedPage("/403").and().csrf();
-	}
+                .formLogin().loginPage("/login").defaultSuccessUrl("/home").usernameParameter("email")
+                .passwordParameter("password").and().logout().logoutSuccessUrl("/login?logout").and()
+                .exceptionHandling().accessDeniedPage("/403").and().csrf();
+    }
 
 }

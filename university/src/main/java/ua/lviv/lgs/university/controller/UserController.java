@@ -1,7 +1,5 @@
 package ua.lviv.lgs.university.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,11 +11,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
 import ua.lviv.lgs.university.domain.Mark;
 import ua.lviv.lgs.university.domain.MarksListContainer;
 import ua.lviv.lgs.university.domain.User;
 import ua.lviv.lgs.university.service.UserService;
+
+import java.util.List;
 
 @Controller
 public class UserController {
