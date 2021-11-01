@@ -31,3 +31,63 @@
 2021-11-01 16:45:47 [SpringApplicationShutdownHook] INFO o.s.o.j.LocalContainerEntityManagerFactoryBean -Closing JPA EntityManagerFactory for persistence unit 'default'
 2021-11-01 16:45:47 [SpringApplicationShutdownHook] INFO com.zaxxer.hikari.HikariDataSource -HikariPool-1 - Shutdown initiated...
 2021-11-01 16:45:47 [SpringApplicationShutdownHook] INFO com.zaxxer.hikari.HikariDataSource -HikariPool-1 - Shutdown completed.
+2021-11-01 17:01:03 [main] INFO u.l.l.u.UniversityApplication -Starting UniversityApplication using Java 1.8.0_271 on DESKTOP-EC73OSQ with PID 3372 (D:\Zenyk\Java\eclipse-workspace\Java Advanced Project\university\target\classes started by livch in D:\Zenyk\Java\eclipse-workspace\Java Advanced Project\university)
+2021-11-01 17:01:03 [main] DEBUG u.l.l.u.UniversityApplication -Running with Spring Boot v2.5.5-SNAPSHOT, Spring v5.3.10
+2021-11-01 17:01:03 [main] INFO u.l.l.u.UniversityApplication -No active profile set, falling back to default profiles: default
+2021-11-01 17:01:05 [main] INFO o.s.d.r.c.RepositoryConfigurationDelegate -Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-01 17:01:05 [main] INFO o.s.d.r.c.RepositoryConfigurationDelegate -Finished Spring Data repository scanning in 92 ms. Found 3 JPA repository interfaces.
+2021-11-01 17:01:06 [main] INFO o.s.b.w.e.tomcat.TomcatWebServer -Tomcat initialized with port(s): 8080 (http)
+2021-11-01 17:01:06 [main] INFO o.a.catalina.core.StandardService -Starting service [Tomcat]
+2021-11-01 17:01:06 [main] INFO o.a.catalina.core.StandardEngine -Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-11-01 17:01:06 [main] INFO org.apache.jasper.servlet.TldScanner -At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-11-01 17:01:06 [main] INFO o.a.c.c.C.[Tomcat].[localhost].[/] -Initializing Spring embedded WebApplicationContext
+2021-11-01 17:01:06 [main] INFO o.s.b.w.s.c.ServletWebServerApplicationContext -Root WebApplicationContext: initialization completed in 3120 ms
+2021-11-01 17:01:06 [main] INFO o.h.jpa.internal.util.LogHelper -HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-01 17:01:06 [main] INFO org.hibernate.Version -HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-11-01 17:01:07 [main] INFO o.h.annotations.common.Version -HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-11-01 17:01:07 [main] INFO com.zaxxer.hikari.HikariDataSource -HikariPool-1 - Starting...
+2021-11-01 17:01:08 [main] INFO com.zaxxer.hikari.HikariDataSource -HikariPool-1 - Start completed.
+2021-11-01 17:01:08 [main] INFO org.hibernate.dialect.Dialect -HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-11-01 17:01:09 [main] INFO o.h.e.t.j.p.i.JtaPlatformInitiator -HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-01 17:01:09 [main] INFO o.s.o.j.LocalContainerEntityManagerFactoryBean -Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-11-01 17:01:09 [main] WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration -spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-01 17:01:10 [main] INFO o.s.s.web.DefaultSecurityFilterChain -Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@30eedaa4, org.springframework.security.web.context.SecurityContextPersistenceFilter@3e8b8f0, org.springframework.security.web.header.HeaderWriterFilter@4b85edeb, org.springframework.security.web.csrf.CsrfFilter@5b665a30, org.springframework.security.web.authentication.logout.LogoutFilter@44abdb1f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@56d822dc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1a345298, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3866c96e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@52b30054, org.springframework.security.web.session.SessionManagementFilter@59933644, org.springframework.security.web.access.ExceptionTranslationFilter@138a85d3, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@74707df8]
+2021-11-01 17:01:11 [main] INFO o.s.b.w.e.tomcat.TomcatWebServer -Tomcat started on port(s): 8080 (http) with context path ''
+2021-11-01 17:01:11 [main] INFO u.l.l.u.UniversityApplication -Started UniversityApplication in 8.98 seconds (JVM running for 11.039)
+2021-11-01 17:01:12 [http-nio-8080-exec-1] INFO o.a.c.c.C.[Tomcat].[localhost].[/] -Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-11-01 17:01:38 [http-nio-8080-exec-10] INFO u.l.l.u.service.FacultyService -Get all faculties
+2021-11-01 17:01:54 [http-nio-8080-exec-8] INFO u.l.l.u.service.FacultyService -Get all faculties
+2021-11-01 17:04:55 [http-nio-8080-exec-4] INFO u.l.l.university.service.UserService -Save user User [id=null, email=admin@gmail.com, firstName=admin, lastName=ADMIN, password=admin, passwordConfirm=admin, role=null, markList=[]]
+2021-11-01 17:05:09 [http-nio-8080-exec-1] INFO u.l.l.u.service.FacultyService -Get all faculties
+2021-11-01 17:13:12 [SpringApplicationShutdownHook] INFO o.s.o.j.LocalContainerEntityManagerFactoryBean -Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-11-01 17:13:12 [SpringApplicationShutdownHook] INFO com.zaxxer.hikari.HikariDataSource -HikariPool-1 - Shutdown initiated...
+2021-11-01 17:13:12 [SpringApplicationShutdownHook] INFO com.zaxxer.hikari.HikariDataSource -HikariPool-1 - Shutdown completed.
+2021-11-01 17:13:20 [main] INFO u.l.l.u.UniversityApplication -Starting UniversityApplication using Java 1.8.0_271 on DESKTOP-EC73OSQ with PID 6520 (D:\Zenyk\Java\eclipse-workspace\Java Advanced Project\university\target\classes started by livch in D:\Zenyk\Java\eclipse-workspace\Java Advanced Project\university)
+2021-11-01 17:13:20 [main] DEBUG u.l.l.u.UniversityApplication -Running with Spring Boot v2.5.5-SNAPSHOT, Spring v5.3.10
+2021-11-01 17:13:20 [main] INFO u.l.l.u.UniversityApplication -No active profile set, falling back to default profiles: default
+2021-11-01 17:13:22 [main] INFO o.s.d.r.c.RepositoryConfigurationDelegate -Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-01 17:13:23 [main] INFO o.s.d.r.c.RepositoryConfigurationDelegate -Finished Spring Data repository scanning in 107 ms. Found 3 JPA repository interfaces.
+2021-11-01 17:13:24 [main] INFO o.s.b.w.e.tomcat.TomcatWebServer -Tomcat initialized with port(s): 8080 (http)
+2021-11-01 17:13:24 [main] INFO o.a.catalina.core.StandardService -Starting service [Tomcat]
+2021-11-01 17:13:24 [main] INFO o.a.catalina.core.StandardEngine -Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-11-01 17:13:24 [main] INFO org.apache.jasper.servlet.TldScanner -At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2021-11-01 17:13:24 [main] INFO o.a.c.c.C.[Tomcat].[localhost].[/] -Initializing Spring embedded WebApplicationContext
+2021-11-01 17:13:24 [main] INFO o.s.b.w.s.c.ServletWebServerApplicationContext -Root WebApplicationContext: initialization completed in 3652 ms
+2021-11-01 17:13:24 [main] INFO o.h.jpa.internal.util.LogHelper -HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-01 17:13:24 [main] INFO org.hibernate.Version -HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-11-01 17:13:25 [main] INFO o.h.annotations.common.Version -HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-11-01 17:13:25 [main] INFO com.zaxxer.hikari.HikariDataSource -HikariPool-1 - Starting...
+2021-11-01 17:13:26 [main] INFO com.zaxxer.hikari.HikariDataSource -HikariPool-1 - Start completed.
+2021-11-01 17:13:26 [main] INFO org.hibernate.dialect.Dialect -HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-11-01 17:13:28 [main] INFO o.h.e.t.j.p.i.JtaPlatformInitiator -HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-01 17:13:28 [main] INFO o.s.o.j.LocalContainerEntityManagerFactoryBean -Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-11-01 17:13:28 [main] WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration -spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-01 17:13:29 [main] INFO o.s.s.web.DefaultSecurityFilterChain -Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@52b32b70, org.springframework.security.web.context.SecurityContextPersistenceFilter@c318864, org.springframework.security.web.header.HeaderWriterFilter@3e8b8f0, org.springframework.security.web.csrf.CsrfFilter@33ebe4f0, org.springframework.security.web.authentication.logout.LogoutFilter@6d420cdd, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7ea3839e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@45796b2a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5408d4b3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@18c820d2, org.springframework.security.web.session.SessionManagementFilter@1a345298, org.springframework.security.web.access.ExceptionTranslationFilter@4b85edeb, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@e3ed455]
+2021-11-01 17:13:30 [main] INFO o.s.b.w.e.tomcat.TomcatWebServer -Tomcat started on port(s): 8080 (http) with context path ''
+2021-11-01 17:13:30 [main] INFO u.l.l.u.UniversityApplication -Started UniversityApplication in 10.269 seconds (JVM running for 11.996)
+2021-11-01 17:20:12 [http-nio-8080-exec-1] INFO o.a.c.c.C.[Tomcat].[localhost].[/] -Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-11-01 17:21:09 [http-nio-8080-exec-2] INFO u.l.l.university.service.UserService -Save user User [id=null, email=petro@gmail.com, firstName=Petro, lastName=Petrenko, password=petro, passwordConfirm=petro, role=null, markList=[]]
+2021-11-01 17:21:24 [http-nio-8080-exec-5] INFO u.l.l.u.service.FacultyService -Get all faculties
+2021-11-01 17:28:23 [SpringApplicationShutdownHook] INFO o.s.o.j.LocalContainerEntityManagerFactoryBean -Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-11-01 17:28:23 [SpringApplicationShutdownHook] INFO com.zaxxer.hikari.HikariDataSource -HikariPool-1 - Shutdown initiated...
+2021-11-01 17:28:23 [SpringApplicationShutdownHook] INFO com.zaxxer.hikari.HikariDataSource -HikariPool-1 - Shutdown completed.

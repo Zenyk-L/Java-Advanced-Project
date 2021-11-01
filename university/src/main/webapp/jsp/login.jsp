@@ -1,6 +1,6 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
@@ -18,30 +18,45 @@
 
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
+    <link type="text/css" href="login.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 </head>
-<body>
+<body class="w3-teal">
+<div class="wrapper fadeInDown ">
+    <div id="formContent">
+        <!-- Tabs Titles -->
 
-	<div class="container">
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="https://previews.123rf.com/images/captainvector/captainvector1703/captainvector170309945/74377645-university-logo-element.jpg" id="icon" alt="Login icon"/>
+        </div>
+        <form method="POST" action="${contextPath}/login" class="form-signin">
+            <h2 class="form-heading">Log in</h2>
 
-    <form method="POST" action="${contextPath}/login" class="form-signin">
-        <h2 class="form-heading">Log in</h2>
+            <div class="form-group ${error != null ? 'has-error' : ''}">
+                <span>${message}</span>
+                <input name="email" type="text" class="fadeIn second" placeholder="Email" value="user@gmail.com"
+                       autofocus="true"/>
+                <input name="password" type="password" class="fadeIn third" placeholder="Password" value="user"/>
+                <span>${error}</span>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-        <div class="form-group ${error != null ? 'has-error' : ''}">
-            <span>${message}</span>
-            <input name="email" type="text" class="form-control" placeholder="Email" value="user@gmail.com"
-                 autofocus="true"/>
-            <input name="password" type="password" class="form-control" placeholder="Password" value="user"/>
-            <span>${error}</span>
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <input class="fadeIn fourth w3-teal" type="submit" value="Log In"/>
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-            <h4 class="text-center"><a href="${contextPath}/registration">Create an account</a></h4>
+
+            </div>
+
+        </form>
+
+        <div id="formFooter" class="w3-teal">
+            <a class="underlineHover"  href="${contextPath}/registration" >Create an account</a>
         </div>
 
-    </form>
+    </div>
 
 </div>
+
 <!-- /container -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>

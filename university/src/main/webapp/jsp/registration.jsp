@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+         pageEncoding="ISO-8859-1" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
@@ -20,58 +20,68 @@
 
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
+    <link type="text/css" href="login.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
-<body>
+<body class="w3-teal">
+<div class="wrapper fadeInDown ">
+    <div id="formContent">
+        <!-- Tabs Titles -->
 
-<div class="container">
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="https://previews.123rf.com/images/captainvector/captainvector1703/captainvector170309945/74377645-university-logo-element.jpg"
+                 id="icon" alt="Login icon"/>
+        </div>
 
-    <form:form method="POST" modelAttribute="userForm" class="form-signin">
-        <h2 class="form-signin-heading">Create your account</h2>
-        
-        <spring:bind path="firstName">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="firstName" class="form-control" placeholder="First name"
-                            autofocus="true"></form:input>
-                <form:errors path="firstName"></form:errors>
-            </div>
-        </spring:bind>
-        
-          <spring:bind path="lastName">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="lastName" class="form-control" placeholder="Last name"
-                            autofocus="true"></form:input>
-                <form:errors path="lastName"></form:errors>
-            </div>
-        </spring:bind>
-        
-        
-        <spring:bind path="email">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="email" class="form-control" placeholder="Email"
-                            autofocus="true"></form:input>
-                <form:errors path="email"></form:errors>
-            </div>
-        </spring:bind>
+        <form:form method="POST" modelAttribute="userForm" class="form-signin">
+            <h2 class="form-signin-heading">Create your account</h2>
 
-        <spring:bind path="password">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="password" path="password" class="form-control" placeholder="Password"></form:input>
-                <form:errors path="password"></form:errors>
-            </div>
-        </spring:bind>
+            <spring:bind path="firstName">
+                <div class="form-group ${status.error ? 'has-error' : ''}">
+                    <form:input type="text" path="firstName" class="fadeIn first" placeholder="First name"
+                                autofocus="true"></form:input>
+                    <form:errors path="firstName"></form:errors>
+                </div>
+            </spring:bind>
 
-        <spring:bind path="passwordConfirm">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="password" path="passwordConfirm" class="form-control"
-                            placeholder="Confirm your password"></form:input>
-                <form:errors path="passwordConfirm"></form:errors>
-            </div>
-        </spring:bind>
+            <spring:bind path="lastName">
+                <div class="form-group ${status.error ? 'has-error' : ''}">
+                    <form:input type="text" path="lastName" class="fadeIn second" placeholder="Last name"
+                                autofocus="true"></form:input>
+                    <form:errors path="lastName"></form:errors>
+                </div>
+            </spring:bind>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-    </form:form>
 
+            <spring:bind path="email">
+                <div class="form-group ${status.error ? 'has-error' : ''}">
+                    <form:input type="text" path="email" class="fadeIn third" placeholder="Email"
+                                autofocus="true"></form:input>
+                    <form:errors path="email"></form:errors>
+                </div>
+            </spring:bind>
+
+            <spring:bind path="password">
+                <div class="form-group ${status.error ? 'has-error' : ''}">
+                    <form:input type="password" path="password" class="fadeIn third"
+                                placeholder="Password"></form:input>
+                    <form:errors path="password"></form:errors>
+                </div>
+            </spring:bind>
+
+            <spring:bind path="passwordConfirm">
+                <div class="form-group ${status.error ? 'has-error' : ''}">
+                    <form:input type="password" path="passwordConfirm" class="fadeIn fourth"
+                                placeholder="Confirm your password"></form:input>
+                    <form:errors path="passwordConfirm"></form:errors>
+                </div>
+            </spring:bind>
+
+            <input class="fadeIn fourth w3-teal" type="submit" value="CREATE"/>
+        </form:form>
+    </div>
 </div>
 <!-- /container -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
