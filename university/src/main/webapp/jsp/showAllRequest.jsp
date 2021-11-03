@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -14,11 +16,30 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>All requests</title>
+<title><spring:message code="all_requests.title" /></title>
 
 <link href="${contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<script
+			src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var selItem = localStorage.getItem("locales");
+			$('#locales').val(selItem ? selItem : 'en');
+			$('#locales').change(function(){
+				var selectedOption = $('#locales').val();
+				if(selectedOption){
+					window.location.replace('?lang=' + selectedOption);
+					localStorage.setItem("locales", selectedOption);
+				}
+			});
+
+		});
+	</script>
 
 </head>
 <body>
@@ -45,25 +66,25 @@
 
 							<table>
 							<tr>
-								<td>To faculty: </td>
+								<td><spring:message code="all_requests.to_faculty" />: </td>
 								<td><form:label  path="faculty" style="font-weight: bold">${currentRequest.faculty.name}</form:label></td>
 								<td><form:input type= "hidden" path="faculty" value="${currentRequest.faculty.id}" readonly="true" /></td>	
 								<td><form:input type= "hidden" path="user" value="${currentRequest.user.id}" readonly="true" /></td>	
 								<td><form:input type= "hidden" path="id" value="${currentRequest.id}" readonly="true" /></td>		 						
 							</tr>
 							<tr >
-							<td>Student name: </td>
+							<td><spring:message code="all_requests.student_name" />: </td>
 								<td><form:label  path="user" >${currentRequest.user.firstName}</form:label></td>
 							</tr>
 							<tr >
-							<td>Student last name: </td>
+							<td><spring:message code="all_requests.student_lastname" />: </td>
 								<td>
 								<form:label  path="user" >${currentRequest.user.lastName}</form:label></td>
 
 							</tr>
 							</table>
 							
-							<td><input  class="w3-button w3-block w3-dark-grey" type="submit" value="Accept request" name="submit" /></td>  
+							<td><input  class="w3-button w3-block w3-dark-grey" type="submit" value="<spring:message code="all_requests.submit" />Accept request" name="submit" /></td>
 							
 						</form:form>
 					</div>

@@ -28,17 +28,27 @@
             src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
+
         $(document).ready(function() {
             var selItem = localStorage.getItem("locales");
-            $('#locales').val(selItem ? selItem : 'en');
+
+            var paramsFromURL = new window.URLSearchParams(window.location.search);
+
+            if(paramsFromURL.get('lang') == null){
+                localStorage.setItem("locales", selItem);
+                    window.location.replace('?lang=' +selItem);
+                }
+
+            $('#locales').val(selItem);
+
             $('#locales').change(function(){
                 var selectedOption = $('#locales').val();
+                console.log("selectedOption "+selectedOption);
                 if(selectedOption){
-                    window.location.replace('?lang=' + selectedOption);
                     localStorage.setItem("locales", selectedOption);
+                    window.location.replace('?lang=' + selectedOption);
                 }
             });
-
         });
     </script>
 
@@ -72,7 +82,7 @@
                 <label style= "color: black"> <spring:message code="login.choose_language" /> </label>
                 <select
                         id="locales">
-                    <option value="en"><spring:message code="login.english" /></option>
+                    <option value="en" ><spring:message code="login.english"/></option>
                     <option value="ua"><spring:message code="login.ukrainian" /></option>
                 </select>
 

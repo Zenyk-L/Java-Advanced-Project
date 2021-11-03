@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -14,11 +16,30 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Create faculty</title>
+<title><spring:message code="create_faculty.title" /></title>
 
 <link href="${contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<script
+			src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var selItem = localStorage.getItem("locales");
+			$('#locales').val(selItem ? selItem : 'en');
+			$('#locales').change(function(){
+				var selectedOption = $('#locales').val();
+				if(selectedOption){
+					window.location.replace('?lang=' + selectedOption);
+					localStorage.setItem("locales", selectedOption);
+				}
+			});
+
+		});
+	</script>
 
 </head>
 <body>
@@ -34,7 +55,7 @@
 				modelAttribute="faculty" enctype="multipart/form-data">
 				<table>
 					<tr>
-						<td><form:label path="name">Name</form:label></td>
+						<td><form:label path="name"><spring:message code="create_faculty.name" /></form:label></td>
 						<td><form:select path="name">						
 						
 						<%-- <form:option value="NONE"> --SELECT--</form:option> --%>
@@ -47,11 +68,11 @@
 						</td>
 					</tr>
 					<tr>
-						<td><form:label path="studentQuantity">Student Quantity</form:label></td>
+						<td><form:label path="studentQuantity"><spring:message code="create_faculty.quantity" /></form:label></td>
 						<td><form:input path="studentQuantity" required="required"/></td>
 					</tr>
 					<tr>
-						<td><form:label path="requiredLevel">Required marks level</form:label></td>
+						<td><form:label path="requiredLevel"><spring:message code="create_faculty.mark_level" /></form:label></td>
 						<td><form:input path="requiredLevel" required="required"/></td>
 					</tr>
 					<c:forEach items="${subjectsList}" var="currentSubject">
@@ -61,7 +82,7 @@
 					</tr>
 					</c:forEach>
 					<tr>
-						<td><input type="submit" value="Submit" /></td>
+						<td><input type="submit" value="<spring:message code="create_faculty.submit" />" /></td>
 					</tr>
 				</table>
 				<input type="hidden" name="${_csrf.parameterName}"

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="security"  uri="http://www.springframework.org/security/tags"%>
@@ -19,6 +21,25 @@
 <link href="${contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<script
+			src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var selItem = localStorage.getItem("locales");
+			$('#locales').val(selItem ? selItem : 'en');
+			$('#locales').change(function(){
+				var selectedOption = $('#locales').val();
+				if(selectedOption){
+					window.location.replace('?lang=' + selectedOption);
+					localStorage.setItem("locales", selectedOption);
+				}
+			});
+
+		});
+	</script>
 
 </head>
 <body>
@@ -26,19 +47,19 @@
 
 		<!-- Sidebar -->
 		<div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 10%">
-			<h3 class="w3-bar-item">Menu</h3>
-			<a href="/home" class="w3-bar-item w3-button">Home</a>
+			<h3 class="w3-bar-item"><spring:message code="sidebar.menu" /></h3>
+			<a href="/home" class="w3-bar-item w3-button"><spring:message code="sidebar.home" /></a>
 			<security:authorize access="hasRole('ROLE_USER')">
-			<a href="/addMarks" class="w3-bar-item w3-button">Fill marks</a>
+			<a href="/addMarks" class="w3-bar-item w3-button"><spring:message code="sidebar.fill_marks" /></a>
 			</security:authorize>
 			<security:authorize access="hasRole('ROLE_ADMIN')">
-			 <a href="/createFaculty" class="w3-bar-item w3-button">Create faculty</a>
+			 <a href="/createFaculty" class="w3-bar-item w3-button"><spring:message code="sidebar.create_faculty" /></a>
 			</security:authorize>
 			<security:authorize access="hasRole('ROLE_ADMIN')">
-			<a href="/showAllRequest" class="w3-bar-item w3-button">Show all requests</a>
+			<a href="/showAllRequest" class="w3-bar-item w3-button"><spring:message code="sidebar.show_all_requests" /></a>
 			</security:authorize>
 			<security:authorize access="hasRole('ROLE_ADMIN')">
-			<a href="/showAllFacultys" class="w3-bar-item w3-button">Show university</a>
+			<a href="/showAllFacultys" class="w3-bar-item w3-button"><spring:message code="sidebar.show_university" /></a>
 			</security:authorize>
 
 		</div>
@@ -54,8 +75,9 @@
 				</form>
 
 				<h2>
-					University        Welcome ${pageContext.request.userPrincipal.name} | <a
-						onclick="document.forms['logoutForm'].submit()">Logout</a>
+					<spring:message code="sidebar.university_welcome" />${pageContext.request.userPrincipal.name}
+					<a style="float: right; padding-right:20px;"
+						onclick="document.forms['logoutForm'].submit()"><spring:message code="sidebar.logout" /></a>
 				</h2>
 
 			</c:if>

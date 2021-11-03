@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -19,6 +21,25 @@
 <link href="${contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<script
+			src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var selItem = localStorage.getItem("locales");
+			$('#locales').val(selItem ? selItem : 'en');
+			$('#locales').change(function(){
+				var selectedOption = $('#locales').val();
+				if(selectedOption){
+					window.location.replace('?lang=' + selectedOption);
+					localStorage.setItem("locales", selectedOption);
+				}
+			});
+
+		});
+	</script>
 
 </head>
 <body>
@@ -46,16 +67,16 @@
 
 						</div>
 						<div class="w3-container w3-center">
-							<h3>Faculty name: ${currentFaculty.name}</h3>
-							<p>Student quantity: ${currentFaculty.studentQuantity}</p>
-							<p>Required mark average: ${currentFaculty.requiredLevel}</p>
-							<p>From subjects:</p>
+							<h3><spring:message code="home.faculty_name" />: ${currentFaculty.name}</h3>
+							<p><spring:message code="home.student_quantity" />: ${currentFaculty.studentQuantity}</p>
+							<p><spring:message code="home.required_mark_average" />: ${currentFaculty.requiredLevel}</p>
+							<p><spring:message code="home.from_subjects" />:</p>
 							<p>${currentFaculty.subjects}</p>
 						</div>
 
 						<a class="w3-button w3-block w3-dark-grey"
 							href="${contextPath}/addRequestToFaculty?facultyId=${currentFaculty.id}&email=${pageContext.request.userPrincipal.name}">
-							Register to faculty</a>
+							<spring:message code="home.register_to_faculty" />Register to faculty</a>
 							
 							
 					</div>

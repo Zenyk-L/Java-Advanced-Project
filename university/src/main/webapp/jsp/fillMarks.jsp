@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -14,11 +16,30 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Fill marks</title>
+<title><spring:message code="fill_marks.title" /></title>
 
 <link href="${contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<script
+			src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var selItem = localStorage.getItem("locales");
+			$('#locales').val(selItem ? selItem : 'en');
+			$('#locales').change(function(){
+				var selectedOption = $('#locales').val();
+				if(selectedOption){
+					window.location.replace('?lang=' + selectedOption);
+					localStorage.setItem("locales", selectedOption);
+				}
+			});
+
+		});
+	</script>
 
 </head>
 <body>
@@ -35,7 +56,7 @@
 
 				<table>
 					<tr>
-						<h4>Fill your marks</h4>
+						<h4><spring:message code="fill_marks.fill_your_marks" /></h4>
 						
 
 					</tr>
@@ -52,7 +73,7 @@
 					</c:forEach>
 
 					<tr>
-						<td><input type="submit" value="Submit" name="submit" onclick="myFunction()" /></td> 
+						<td><input type="submit" value="<spring:message code="fill_marks.submit" />" name="submit" onclick="myFunction()" /></td>
 						<!-- <td><button type="submit" value="Submit" name="submit" onclick="myFunction()" >Submit</button></td> -->
 					</tr>
 				</table>
@@ -69,7 +90,7 @@
 
 	function myFunction() {
 	  if (form.checkValidity()) {
-	    alert("Marks added Succesful!");
+	    alert("<spring:message code="fill_marks.marks_added_successful" />!");
 	  }
 	}
 	</script>
