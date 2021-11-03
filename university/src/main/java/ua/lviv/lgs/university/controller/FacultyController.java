@@ -133,7 +133,7 @@ System.out.println(facultyId);
 			model.addAttribute("message", message);
 			return "messageAfterRequest";
 		}
-		Integer requestId = requestToFaculty.getId();
+//		Integer requestId = requestToFaculty.getId();
 		List<Subject> facultySubjects = faculty.getSubjects();
 		int count = 0;
 		double avg = 0;

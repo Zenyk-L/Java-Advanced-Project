@@ -68,7 +68,7 @@
             <div class="form-group ${error != null ? 'has-error' : ''}">
                 <span>${message}</span>
                 <input name="email" type="text" class="fadeIn second" placeholder="<spring:message code="login.email" />" value="user@gmail.com"
-                       autofocus="true"/>
+                       autofocus/>
                 <input name="password" type="password" class="fadeIn third" placeholder="<spring:message code="login.password" />" value="user"/>
                 <span>${error}</span>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
